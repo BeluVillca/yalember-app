@@ -47,7 +47,7 @@ function App() {
       id: 1,
       nombre: "BELU",
       rol: "YALEMBER",
-      descripcion: "Encargada de listas VIP y reservas de mesas principales.",
+      descripcion: "Listas VIP, reserva de entradas y reservas de mesas principales.",
       celular: "59171111111",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
     },
@@ -55,7 +55,7 @@ function App() {
       id: 2,
       nombre: "ERI",
       rol: "YALEMBER",
-      descripcion: "Encargada de listas VIP y reservas de mesas principales.",
+      descripcion: "Listas VIP, reserva de entradas y reservas de mesas principales.",
       celular: "59172222222",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
     },
@@ -63,10 +63,35 @@ function App() {
       id: 3,
       nombre:"JHAZ",
       rol: "YALEMBER",
-      descripcion: "Encargada de listas VIP y reservas de mesas principales.",
+      descripcion: "Listas VIP, reserva de entradas y reservas de mesas principales.",
       celular: "59172222222",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
-    }
+    },
+    // DATA DE TU STAFF
+  
+    { id: 1, nombre: "Rodrigo", rol: "Obelisco", descripcion: "Reserva de entradas.", celular: "59160106933", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+    { id: 2, nombre: "Adriel", rol: "Obelisco", descripcion: "Reserva de entradas.", celular: "59173517637", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+    { id: 3, nombre: "Angel", rol: "Obelisco", descripcion: "Reserva de entradas.", celular: "59169733579", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+    { id: 4, nombre: "Sami", rol: "Básico", descripcion: "Reserva de entradas.", celular: "59177557625", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+    { id: 5, nombre: "Carlitos", rol: "Puras - Monoblock", descripcion: "Reserva de entradas.", celular: "59168084371", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+    { id: 6, nombre: "Lucy", rol: "Puras - Monoblock", descripcion: "Reserva de entradas.", celular: "59165540389", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+    { id: 7, nombre: "Edil", rol: "C. Económicas (Montes)", descripcion: "Reserva de entradas.", celular: "59165119676", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+    { id: 8, nombre: "Anahi", rol: "Medicina", descripcion: "Reserva de entradas.", celular: "59165177878", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+    { id: 9, nombre: "Vale", rol: "Medicina / Odontologia", descripcion: "Reserva de entradas.", celular: "59163237309", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+    { id: 10, nombre: "Jhonatan", rol: "Humanidades - Monoblock", descripcion: "Reserva de entradas.", celular: "59177781823", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+    { id: 11, nombre: "Wendy", rol: "Humanidades - Monoblock", descripcion: "Reserva de entradas.", celular: "59162438860", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+    { id: 12, nombre: "Vero", rol: "C. Sociales - Monoblock", descripcion: "Reserva de entradas.", celular: "59179633599", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+    { id: 13, nombre: "Jhona", rol: "Multicine - Av. Arce", descripcion: "Reserva de entradas.", celular: "59163214933", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+    { id: 14, nombre: "Kathy", rol: "Salesiana", descripcion: "Reserva de entradas.", celular: "59173251850", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+    { id: 15, nombre: "Axel", rol: "Unifranz", descripcion: "Reserva de entradas.", celular: "59177788100", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+    { id: 16, nombre: "Álvaro", rol: "Loyola", descripcion: "Reserva de entradas.", celular: "59179548573", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+    { id: 17, nombre: "Zule", rol: "Plaza San Fransisco", descripcion: "Reserva de entradas.", celular: "59174041227", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+    { id: 18, nombre: "Abril", rol: "Plaza del Estudiante", descripcion: "Reserva de entradas.", celular: "59175845458", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+    { id: 19, nombre: "Julian", rol: "Estadium Hernando Siles", descripcion: "Reserva de entradas.", celular: "59162530775", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" }
+  
+
+
+
   ];
 
   return (
@@ -174,13 +199,16 @@ function App() {
         </div>
       </div>
 
-      {/* AUSPICIADORES / SPONSORS */}
+     {/* REDES SOCIALES */}
       <div className="text-center mt-5 mb-5 pb-5 sponsors-wrapper">
-        <p className="small text-muted mb-2 text-uppercase" style={{ fontSize: '0.7rem', letterSpacing: '2px' }}>Auspiciado por</p>
+        <p className="small text-muted mb-2 text-uppercase" style={{ fontSize: '0.7rem', letterSpacing: '2px' }}>Síguenos y contáctanos</p>
         <div className="d-flex justify-content-center gap-4 text-secondary">
-          <i className="bi bi-apple fs-4 sponsor-icon"></i>
-          <i className="bi bi-spotify fs-4 sponsor-icon"></i>
-          <i className="bi bi-tencent-qq fs-4 sponsor-icon"></i>
+          <a href="TU_ENLACE_TIKTOK" target="_blank" rel="noreferrer" className="text-white hover-danger transition-all">
+            <i className="bi bi-tiktok fs-3 sponsor-icon"></i>
+          </a>
+          <a href="TU_ENLACE_WHATSAPP" target="_blank" rel="noreferrer" className="text-success hover-danger transition-all">
+            <i className="bi bi-whatsapp fs-3 sponsor-icon"></i>
+          </a>
         </div>
       </div>
 
@@ -221,7 +249,7 @@ function App() {
                 <small className="text-white"><strong>REGLAS DE INGRESO:</strong> Evento estrictamente para mayores de 18 años (+18). Ingreso únicamente con Carnet de Identidad original vigente. Nos reservamos el derecho de admisión.</small>
               </div>
 
-              <a href="https://maps.google.com/?q=Tu+Direccion+Aqui" target="_blank" rel="noreferrer" className="btn btn-outline-danger w-100 mt-2 d-flex align-items-center justify-content-center gap-2 rounded-pill">
+              <a href="https://maps.app.goo.gl/n1AVcJWxDTM2sVUN8?g_st=ac" target="_blank" rel="noreferrer" className="btn btn-outline-danger w-100 mt-2 d-flex align-items-center justify-content-center gap-2 rounded-pill">
                 <i className="bi bi-geo-alt-fill"></i> Ver en Google Maps
               </a>
             </div>
@@ -229,7 +257,7 @@ function App() {
         </div>
       </div>
 
-      {/* MODAL: LINE UP */}
+   {/* MODAL: LINE UP */}
       <div className="modal fade" id="bandModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div className="modal-content bg-dark">
@@ -238,6 +266,10 @@ function App() {
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div className="modal-body text-center">
+              
+              {/* IMAGEN AÑADIDA AQUÍ */}
+              <img src={imagenInfoEvento} alt="Line Up del Evento" className="img-fluid rounded-4 mb-3 shadow-lg" style={{ border: '1px solid rgba(255,0,68,0.3)' }} />
+              
               <div className="mb-4 p-3 rounded-4" style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid var(--rojo-neon)' }}>
                 <h6 className="text-white fw-bold mb-1"><i className="bi bi-mic-fill me-2"></i> ARTISTA INVITADO</h6>
                 <h3 className="text-danger fw-black text-uppercase" style={{ textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>KUMBIA DALE</h3>

@@ -45,17 +45,25 @@ function App() {
   const staffList = [
     {
       id: 1,
-      nombre: "Carlos Mendoza",
-      rol: "Coordinador RRPP",
-      descripcion: "Encargado de listas VIP y reservas de mesas principales. ¡Escríbeme para armar tu combo!",
+      nombre: "BELU",
+      rol: "YALEMBER",
+      descripcion: "Encargada de listas VIP y reservas de mesas principales.",
       celular: "59171111111",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
     },
     {
       id: 2,
-      nombre: "Andrea Rojas",
-      rol: "Relaciones Públicas",
-      descripcion: "Especialista en cumpleaños y beneficios grupales. Te aseguro los mejores shots de cortesía.",
+      nombre: "ERI",
+      rol: "YALEMBER",
+      descripcion: "Encargada de listas VIP y reservas de mesas principales.",
+      celular: "59172222222",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      id: 3,
+      nombre:"JHAZ",
+      rol: "YALEMBER",
+      descripcion: "Encargada de listas VIP y reservas de mesas principales.",
       celular: "59172222222",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
     }
@@ -202,9 +210,9 @@ function App() {
               <div className="text-muted small text-start mt-3">
                 <p>Prepárate para una noche inolvidable. YALEMBER llega con una producción de primer nivel, luces láser, sonido envolvente y el mejor ambiente de la ciudad.</p>
                 <ul className="list-unstyled">
-                  <li className="mb-2"><i className="bi bi-geo-alt text-danger me-2"></i> <strong>Lugar:</strong> Club Zona Sur (Calle 15, Esq. Principal)</li>
-                  <li className="mb-2"><i className="bi bi-clock text-danger me-2"></i> <strong>Apertura:</strong> 22:00 Hrs</li>
-                  <li className="mb-2"><i className="bi bi-stars text-danger me-2"></i> <strong>Dress Code:</strong> Elegante / Dress to Impress</li>
+                  <li className="mb-2"><i className="bi bi-geo-alt text-danger me-2"></i> <strong>Lugar:</strong> SALON FANTASIO (Calle Camacho, Esq. Colón)</li>
+                  <li className="mb-2"><i className="bi bi-clock text-danger me-2"></i> <strong>Apertura:</strong> 16:00 Hrs</li>
+                  <li className="mb-2"><i className="bi bi-stars text-danger me-2"></i> <strong>Dress Code:</strong> Casual</li>
                 </ul>
               </div>
 
@@ -232,7 +240,7 @@ function App() {
             <div className="modal-body text-center">
               <div className="mb-4 p-3 rounded-4" style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid var(--rojo-neon)' }}>
                 <h6 className="text-white fw-bold mb-1"><i className="bi bi-mic-fill me-2"></i> ARTISTA INVITADO</h6>
-                <h3 className="text-danger fw-black text-uppercase" style={{ textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>LOS REYES DEL RITMO</h3>
+                <h3 className="text-danger fw-black text-uppercase" style={{ textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>KUMBIA DALE</h3>
                 <p className="text-muted small m-0">Tocando todos sus éxitos totalmente en vivo a la medianoche.</p>
               </div>
               
@@ -243,7 +251,7 @@ function App() {
                   <i className="bi bi-disc text-danger fs-4"></i>
                 </div>
                 <div>
-                  <h6 className="m-0 text-white">DJ CARLOS T.</h6>
+                  <h6 className="m-0 text-white">DJ 1.</h6>
                   <small className="text-muted">Reggaeton Old School & Perreo</small>
                 </div>
               </div>
@@ -253,7 +261,7 @@ function App() {
                   <i className="bi bi-speaker text-danger fs-4"></i>
                 </div>
                 <div>
-                  <h6 className="m-0 text-white">DJ ALAN B.</h6>
+                  <h6 className="m-0 text-white">DJ 2.</h6>
                   <small className="text-muted">Tech House & Cachengue</small>
                 </div>
               </div>

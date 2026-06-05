@@ -2,14 +2,18 @@
    LÍNEA GRÁFICA YALEMBER (Negro, Guinda, Rojo)
    ========================================== */
 :root {
-  --bg-dark: #060103;       
+  --bg-dark: #060103;
   --bg-gradient: linear-gradient(185deg, #060103 0%, #2a000a 50%, #5a0016 100%);
   --rojo-neon: #ff0044;
   --text-light: #ffffff;
-  --text-muted: #cca3ad;
+  --text-muted: #ffffff; /* CAMBIADO A BLANCO */
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background-color: var(--bg-dark);
@@ -25,12 +29,12 @@ body {
   background: var(--bg-gradient);
   min-height: 100vh;
   box-shadow: 0 0 50px rgba(255, 0, 68, 0.15);
-  padding-top: 75px; 
-  padding-bottom: 110px; /* Aumentado un poco para espacio de sponsors */
+  padding-top: 75px;
+  padding-bottom: 110px;
   position: relative;
 }
 
-/* NAVBAR SÚPER MODERNO */
+/* NAVBAR */
 .custom-navbar {
   max-width: 480px;
   margin: 0 auto;
@@ -49,7 +53,7 @@ body {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 0, 68, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
 
-/* Presentador Labubu */
+/* TITULOS */
 .presenter-tag {
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -63,18 +67,19 @@ body {
   font-size: 2.8rem;
   font-weight: 900;
   letter-spacing: 3px;
+  color: #ffffff;
   text-shadow: 0 0 20px var(--rojo-neon);
 }
 
-/* 🎬 MEJORAS DEL CARRUSEL */
-.carousel-item img, 
+/* CARRUSEL */
+.carousel-item img,
 .carousel-item video {
   height: 230px;
   object-fit: cover;
   border-radius: 16px;
 }
 
-/* ⏳ ESTILOS DEL CONTADOR REGRESIVO */
+/* CONTADOR */
 .countdown-wrapper {
   backdrop-filter: blur(10px);
 }
@@ -86,18 +91,24 @@ body {
 .time-block h2 {
   font-weight: 900 !important;
   line-height: 1;
+  color: #f53434 !important;
 }
 
 .time-separator {
+  color: #d13030 !important;
   animation: blink 1s infinite;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }
 
-/* CUADRÍCULA TIPO APP */
+/* GRID APP */
 .action-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -106,8 +117,8 @@ body {
 }
 
 .app-btn {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 0, 68, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 0, 68, 0.25);
   border-radius: 20px;
   padding: 20px 10px;
   display: flex;
@@ -115,7 +126,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: #fff;
+  color: #ffffff !important;
   text-decoration: none;
   transition: transform 0.15s ease, background-color 0.2s ease;
   backdrop-filter: blur(10px);
@@ -139,16 +150,41 @@ body {
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
+  color: #ffffff !important;
 }
 
-/* ESTILOS DE SPONSORS / FOOTER */
+/* TEXTOS GENERALES */
+p,
+span,
+small,
+label,
+li,
+ul,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ffffff;
+}
+
+/* TEXTOS MUTED */
+.text-muted {
+  color: #ffffff !important;
+  opacity: 0.85;
+}
+
+/* SPONSORS */
 .sponsors-wrapper {
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .sponsor-icon {
   transition: color 0.3s ease, transform 0.2s ease;
   cursor: pointer;
+  color: #ffffff !important;
 }
 
 .sponsor-icon:hover {
@@ -156,25 +192,31 @@ body {
   transform: scale(1.1);
 }
 
-/* ESTILOS DE MODALES Y FORMULARIOS */
+/* MODALES */
 .modal-content {
   background: linear-gradient(145deg, #0a0003 0%, #20000a 100%) !important;
   border: 1px solid rgba(255, 0, 68, 0.6) !important;
-  color: var(--text-light) !important;
+  color: #ffffff !important;
   border-radius: 25px !important;
   backdrop-filter: blur(20px);
 }
 
 .modal-body {
-  max-height: 70vh; 
+  max-height: 70vh;
+  color: #ffffff !important;
 }
 
+/* INPUTS */
 .custom-input {
   background: rgba(0, 0, 0, 0.5) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #fff !important;
+  color: #ffffff !important;
   border-radius: 12px;
   padding: 10px 15px;
+}
+
+.custom-input::placeholder {
+  color: rgba(255,255,255,0.7);
 }
 
 .custom-input:focus {
@@ -182,17 +224,31 @@ body {
   box-shadow: 0 0 8px rgba(255, 0, 68, 0.5) !important;
 }
 
-/* Tarjetas Bebidas del Bar */
+/* TARJETAS */
 .drink-card {
   background: rgba(0, 0, 0, 0.4);
   border-left: 4px solid var(--rojo-neon);
   padding: 15px;
   border-radius: 12px;
   margin-bottom: 15px;
+  color: #ffffff;
 }
-.drink-title { color: var(--rojo-neon); font-weight: bold; letter-spacing: 1px; }
 
-/* Botón WhatsApp Flotante Fijo abajo */
+.drink-title {
+  color: var(--rojo-neon);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* STAFF */
+.staff-card,
+.staff-card p,
+.staff-card small,
+.staff-card span {
+  color: #ffffff !important;
+}
+
+/* BOTÓN FLOTANTE */
 .cta-floating {
   position: fixed;
   bottom: 20px;
@@ -205,7 +261,7 @@ body {
 
 .btn-main-cta {
   background: linear-gradient(90deg, #990026 0%, #ff0044 50%, #ff3366 100%);
-  color: #fff;
+  color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -219,4 +275,13 @@ body {
 
 .btn-main-cta:active {
   transform: scale(0.97) !important;
+}
+
+/* LINKS */
+a {
+  color: #ffffff;
+}
+
+a:hover {
+  color: var(--rojo-neon);
 }

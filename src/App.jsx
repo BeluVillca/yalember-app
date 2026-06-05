@@ -57,7 +57,7 @@ function App() {
       nombre: "ERI",
       rol: "YALEMBER",
       descripcion: "Listas VIP, reserva de entradas y reservas de mesas principales.",
-      celular: "59172222222",
+      celular: "59175825075",
       avatar: "https://img.icons8.com/?size=100&id=HEBTcR9O3uzR&format=png&color=000000"
     },
     {
@@ -65,7 +65,7 @@ function App() {
       nombre:"JHAZ",
       rol: "YALEMBER",
       descripcion: "Listas VIP, reserva de entradas y reservas de mesas principales.",
-      celular: "59172222222",
+      celular: "59178858660",
       avatar: "https://img.icons8.com/?size=100&id=HEBTcR9O3uzR&format=png&color=000000"
     },
     // DATA DE TU STAFF
@@ -98,7 +98,7 @@ function App() {
   return (
     <div className="app-container px-3 overflow-hidden">
       
-{/* NAVBAR SUPERIOR - MENÚ COMPACTO SIEMPRE FLOTANTE (PC Y CELULAR) */}
+{/* NAVBAR SUPERIOR - CON TU ICONO ORIGINAL */}
 <nav className="navbar navbar-dark fixed-top px-3 py-2.5" 
      style={{ 
        background: 'rgba(10, 10, 10, 0.8)', 
@@ -109,27 +109,23 @@ function App() {
   <div className="container-fluid px-0 position-relative">
     
     {/* BRAND / LOGO */}
-    <a className="navbar-brand text-white fw-black tracking-widest m-0 d-flex align-items-center gap-2" 
-       style={{ fontSize: '1.1rem', letterSpacing: '2px' }} 
+    <a className="navbar-brand text-white fw-bold" 
+       style={{ letterSpacing: '2px' }} 
        href="#top"
     >
-      <span className="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-20 px-2 py-1 rounded-3">
-        <i className="bi bi-mask"></i>
-      </span>
-      <span>LABUBU</span>
+      <i className="bi bi-mask text-danger me-2"></i> LABUBU
     </a>
     
-    {/* BOTÓN HAMBURGUESA - CONTROLADO POR REACT */}
+    {/* TU BOTÓN HAMBURGUESA ORIGINAL (Controlado por React) */}
     <button 
-      className="navbar-toggler border-0 p-2" 
+      className="navbar-toggler custom-toggler" 
       type="button" 
       onClick={() => setMenuAbierto(!menuAbierto)}
-      style={{ background: 'rgba(255, 255, 255, 0.05)', borderRadius: '10px' }}
     >
-      <span className="navbar-toggler-icon" style={{ filter: 'invert(1) sepia(1) saturate(5) hue-rotate(330deg)' }}></span>
+      <span className="custom-toggler-icon"></span>
     </button>
     
-    {/* MENÚ DESPLEGABLE ESTILO TARJETA PREMIUM (Controlado por el estado de React) */}
+    {/* MENÚ DESPLEGABLE ESTILO TARJETA PREMIUM */}
     <div className={`position-absolute end-0 ${menuAbierto ? 'd-block' : 'd-none'}`} 
          style={{ 
            top: '100%', 
@@ -148,7 +144,7 @@ function App() {
         <li className="nav-item">
           <a className="nav-link text-white-50 fw-semibold text-uppercase tracking-wider px-3 py-2.5 rounded-3 d-flex align-items-center gap-2 menu-fixed-link" 
              href="#top" 
-             onClick={() => setMenuAbierto(false)} // Cierra el menú al hacer clic
+             onClick={() => setMenuAbierto(false)} 
              data-bs-toggle="modal" 
              data-bs-target="#eventModal"
           >
@@ -283,7 +279,7 @@ function App() {
     
     {/* TIKTOK */}
     <a 
-      href="TU_ENLACE_TIKTOK" 
+      href="https://vt.tiktok.com/ZSQ8w2BhX/" 
       target="_blank" 
       rel="noreferrer" 
       className="d-flex align-items-center justify-content-center rounded-circle text-white shadow-sm social-link-btn"
@@ -300,7 +296,7 @@ function App() {
 
     {/* INSTAGRAM (Opcional, pero ideal para eventos) */}
     <a 
-      href="TU_ENLACE_INSTAGRAM" 
+      href="https://www.instagram.com/labubu_events?igsh=MTNzcDVwYWRtMTh6aA==" 
       target="_blank" 
       rel="noreferrer" 
       className="d-flex align-items-center justify-content-center rounded-circle text-white shadow-sm social-link-btn"
@@ -317,7 +313,7 @@ function App() {
 
     {/* WHATSAPP */}
     <a 
-      href="https://api.whatsapp.com/send?phone=59176597401" 
+      href="https://chat.whatsapp.com/Kavs3lUQaBX49lVWZ7EsBs" 
       target="_blank" 
       rel="noreferrer" 
       className="d-flex align-items-center justify-content-center rounded-circle text-white shadow-sm social-link-btn"
@@ -506,7 +502,7 @@ function App() {
             KUMBIA DALE
           </h2>
           <div className="mt-2 text-white-50 small">
-            <i className="bi bi-clock me-1"></i> Medianoche <span className="mx-1">•</span> En Vivo
+            <i className="bi bi-clock me-1"></i> Espéralo <span className="mx-1">•</span> En Vivo
           </div>
         </div>
         

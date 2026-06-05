@@ -1,18 +1,16 @@
-
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css';
 
-// 👇 1. IMPORTA TUS ARCHIVOS DIRECTAMENTE AQUÍ 👇
-import imagenY1 from './assets/Y1.jpg';
+// IMPORTA TUS ARCHIVOS DIRECTAMENTE AQUÍ
+import imagenY1 from './assets/Y2.jpg';
 import imagenY2 from './assets/Y2.jpg';
 import imagenInfoEvento from './assets/info_evento.jpg';
 
-
 function App() {
-  // ⏳ CONTADOR (Para el 12 de Junio de 2026)
+  // CONTADOR (Para el 12 de Junio de 2026)
   const targetDate = new Date("June 12, 2026 22:00:00").getTime();
   const [timeLeft, setTimeLeft] = useState({ dias: 0, horas: 0, minutos: 0, segundos: 0 });
 
@@ -34,16 +32,16 @@ function App() {
     return () => clearInterval(interval);
   }, [targetDate]);
 
-  // 🎂 FORMULARIO CUMPLEAÑEROS
+  // FORMULARIO CUMPLEAÑEROS
   const [cumpleForm, setCumpleForm] = useState({ nombre: '', shot: 'Tequila' });
 
   const handleCumple = (e) => {
     e.preventDefault();
-    alert(`🎉 ¡Registrado! ${cumpleForm.nombre}, tu Shot de ${cumpleForm.shot} te espera en barra.`);
+    alert(`¡Registrado! ${cumpleForm.nombre}, tu Shot de ${cumpleForm.shot} te espera en barra.`);
     setCumpleForm({ nombre: '', shot: 'Tequila' });
   };
 
-  // 👥 DATA DE TU STAFF
+  // DATA DE TU STAFF
   const staffList = [
     {
       id: 1,
@@ -64,7 +62,7 @@ function App() {
   ];
 
   return (
-    <div className="app-container px-3">
+    <div className="app-container px-3 overflow-hidden">
       
       {/* NAVBAR SUPERIOR BOOTSTRAP */}
       <nav className="navbar navbar-dark fixed-top custom-navbar px-3">
@@ -84,51 +82,57 @@ function App() {
       </nav>
 
       {/* CABECERA (HERO) */}
-      <div className="text-center mb-3 mt-4 pt-4">
-        <span className="presenter-tag">LABUBU EVENTS PRESENTA</span>
-        <h1 className="brand-title">YALEMBER</h1>
+      <div className="text-center mb-3 mt-5 pt-5">
+        <span className="presenter-tag d-block mb-2">LABUBU EVENTS PRESENTA</span>
+        <h1 className="brand-title display-4 fw-bold">YALEMBER</h1>
       </div>
 
-      {/* 🎬 CARRUSEL MIXTO (VIDEO + IMÁGENES) */}
+     {/* CARRUSEL (SOLO IMÁGENES - SE VEN COMPLETAS) */}
       <div id="mainCarousel" className="carousel slide mb-4 shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
-        <div className="carousel-inner">
-          <div className="carousel-item active" data-bs-interval="6000">
-            <div className="ratio ratio-16x9">
-            </div>
+        <div className="carousel-inner bg-black">
+          {/* Imagen 1 */}
+          <div className="carousel-item active" data-bs-interval="3000">
+            <img 
+              src={imagenY2} 
+              className="d-block w-100 img-fluid" 
+              style={{ height: 'auto', maxHeight: '70vh', objectFit: 'contain' }} 
+              alt="Promo 1" 
+            />
           </div>
+          
+          {/* Imagen 2 (Misma imagen por el momento) */}
           <div className="carousel-item" data-bs-interval="3000">
-            <img src={imagenY1} className="d-block w-100" alt="Promo 1" />
-          </div>
-          <div className="carousel-item" data-bs-interval="3000">
-            <img src={imagenY2} className="d-block w-100" alt="Promo 2" />
-          </div>
-          <div className="carousel-item" data-bs-interval="3000">
-            <img src={imagenY1} className="d-block w-100" alt="Promo 3" />
+            <img 
+              src={imagenY2} 
+              className="d-block w-100 img-fluid" 
+              style={{ height: 'auto', maxHeight: '70vh', objectFit: 'contain' }} 
+              alt="Promo 2" 
+            />
           </div>
         </div>
       </div>
 
-      {/* ⏳ CONTADOR VISUAL RENDERIZADO */}
-      <div className="countdown-wrapper mb-4 text-center p-3 rounded-4" style={{ background: 'rgba(0, 0, 0, 0.4)', border: '1px solid rgba(255, 0, 64, 0.2)' }}>
+      {/* CONTADOR VISUAL RENDERIZADO */}
+      <div className="countdown-wrapper mb-4 text-center p-3 rounded-4 container-fluid" style={{ background: 'rgba(0, 0, 0, 0.4)', border: '1px solid rgba(255, 0, 64, 0.2)' }}>
         <p className="small mb-2 text-uppercase tracking-wider" style={{ color: 'var(--text-muted)', letterSpacing: '2px', fontSize: '0.75rem' }}>El descontrol inicia en:</p>
-        <div className="d-flex justify-content-center gap-3">
-          <div className="time-block">
-            <h2 className="fw-black m-0" style={{ color: 'var(--rojo-neon)', fontSize: '2rem', textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>{timeLeft.dias}</h2>
+        <div className="d-flex justify-content-center gap-2 gap-sm-3 flex-wrap">
+          <div className="time-block text-center">
+            <h2 className="fw-black m-0" style={{ color: 'var(--rojo-neon)', fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>{timeLeft.dias}</h2>
             <span className="text-muted small" style={{ fontSize: '0.65rem' }}>DÍAS</span>
           </div>
-          <div className="time-separator fw-bold text-muted fs-3">:</div>
-          <div className="time-block">
-            <h2 className="fw-black m-0" style={{ color: 'var(--rojo-neon)', fontSize: '2rem', textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>{String(timeLeft.horas).padStart(2, '0')}</h2>
+          <div className="time-separator fw-bold text-muted" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}>:</div>
+          <div className="time-block text-center">
+            <h2 className="fw-black m-0" style={{ color: 'var(--rojo-neon)', fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>{String(timeLeft.horas).padStart(2, '0')}</h2>
             <span className="text-muted small" style={{ fontSize: '0.65rem' }}>HRS</span>
           </div>
-          <div className="time-separator fw-bold text-muted fs-3">:</div>
-          <div className="time-block">
-            <h2 className="fw-black m-0" style={{ color: 'var(--rojo-neon)', fontSize: '2rem', textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>{String(timeLeft.minutos).padStart(2, '0')}</h2>
+          <div className="time-separator fw-bold text-muted" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}>:</div>
+          <div className="time-block text-center">
+            <h2 className="fw-black m-0" style={{ color: 'var(--rojo-neon)', fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>{String(timeLeft.minutos).padStart(2, '0')}</h2>
             <span className="text-muted small" style={{ fontSize: '0.65rem' }}>MIN</span>
           </div>
-          <div className="time-separator fw-bold text-muted fs-3">:</div>
-          <div className="time-block">
-            <h2 className="fw-black m-0" style={{ color: 'var(--rojo-neon)', fontSize: '2rem', textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>{String(timeLeft.segundos).padStart(2, '0')}</h2>
+          <div className="time-separator fw-bold text-muted" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}>:</div>
+          <div className="time-block text-center">
+            <h2 className="fw-black m-0" style={{ color: 'var(--rojo-neon)', fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>{String(timeLeft.segundos).padStart(2, '0')}</h2>
             <span className="text-muted small" style={{ fontSize: '0.65rem' }}>SEG</span>
           </div>
         </div>
@@ -146,7 +150,7 @@ function App() {
         </div>
         <div className="app-btn" data-bs-toggle="modal" data-bs-target="#cumpleModal">
           <i className="bi bi-balloon-fill"></i>
-          <span> LABUBU Cumpleañeros</span>
+          <span>LABUBU Cumpleañeros</span>
         </div>
         <div className="app-btn" data-bs-toggle="modal" data-bs-target="#barModal">
           <i className="bi bi-cup-straw"></i>
@@ -158,12 +162,12 @@ function App() {
         </div>
         <div className="app-btn" data-bs-toggle="modal" data-bs-target="#nextEventsModal">
           <i className="bi bi-rocket-takeoff-fill"></i>
-          <span>Próximos</span>
+          <span>Próximos EVENTOS</span>
         </div>
       </div>
 
       {/* AUSPICIADORES / SPONSORS */}
-      <div className="text-center mt-5 mb-5 pb-4 sponsors-wrapper">
+      <div className="text-center mt-5 mb-5 pb-5 sponsors-wrapper">
         <p className="small text-muted mb-2 text-uppercase" style={{ fontSize: '0.7rem', letterSpacing: '2px' }}>Auspiciado por</p>
         <div className="d-flex justify-content-center gap-4 text-secondary">
           <i className="bi bi-apple fs-4 sponsor-icon"></i>
@@ -173,8 +177,8 @@ function App() {
       </div>
 
       {/* BOTÓN FLOTANTE CONFIRMACIÓN */}
-      <div className="cta-floating">
-        <a href="https://wa.me/59170000000?text=Hola%20LABUBU!%20Quiero%20asistir%20a%20YALEMBER" target="_blank" rel="noreferrer" className="btn btn-main-cta w-100 d-flex align-items-center justify-content-center gap-2">
+      <div className="cta-floating fixed-bottom p-3" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)' }}>
+        <a href="https://wa.me/59170000000?text=Hola%20LABUBU!%20Quiero%20asistir%20a%20YALEMBER" target="_blank" rel="noreferrer" className="btn btn-danger w-100 d-flex align-items-center justify-content-center gap-2 py-2 fw-bold rounded-pill shadow">
           <i className="bi bi-check2-square fs-5"></i> Confirmar Asistencia
         </a>
       </div>
@@ -186,23 +190,23 @@ function App() {
       {/* MODAL: EL EVENTO */}
       <div className="modal fade" id="eventModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div className="modal-content">
+          <div className="modal-content bg-dark">
             <div className="modal-header border-0">
-              <h5 className="modal-title text-danger fw-bold">📅 EL EVENTO</h5>
+              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-calendar-event me-2"></i> EL EVENTO</h5>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div className="modal-body text-center">
-              {/* 👇 AQUÍ ESTÁ LA CORRECCIÓN 👇 */}
               <img src={imagenInfoEvento} alt="Información del Evento" className="img-fluid rounded-4 mb-3 shadow-lg" style={{ border: '1px solid rgba(255,0,68,0.3)' }} />
               
               <h6 className="text-white fw-bold mt-2">LA FIESTA MÁS EXCLUSIVA DE LA TEMPORADA</h6>
-              <p className="text-muted small text-start mt-3">
-                Prepárate para una noche inolvidable. YALEMBER llega con una producción de primer nivel, luces láser, sonido envolvente y el mejor ambiente de la ciudad.
-                <br/><br/>
-                📍 <strong>Lugar:</strong> Club Zona Sur (Calle 15, Esq. Principal)<br/>
-                🕰️ <strong>Apertura:</strong> 22:00 Hrs<br/>
-                👗 <strong>Dress Code:</strong> Elegante / Dress to Impress
-              </p>
+              <div className="text-muted small text-start mt-3">
+                <p>Prepárate para una noche inolvidable. YALEMBER llega con una producción de primer nivel, luces láser, sonido envolvente y el mejor ambiente de la ciudad.</p>
+                <ul className="list-unstyled">
+                  <li className="mb-2"><i className="bi bi-geo-alt text-danger me-2"></i> <strong>Lugar:</strong> Club Zona Sur (Calle 15, Esq. Principal)</li>
+                  <li className="mb-2"><i className="bi bi-clock text-danger me-2"></i> <strong>Apertura:</strong> 22:00 Hrs</li>
+                  <li className="mb-2"><i className="bi bi-stars text-danger me-2"></i> <strong>Dress Code:</strong> Elegante / Dress to Impress</li>
+                </ul>
+              </div>
 
               <div className="alert alert-dark border-danger text-start mt-3 p-2" role="alert">
                 <i className="bi bi-exclamation-triangle-fill text-warning me-2"></i>
@@ -220,22 +224,22 @@ function App() {
       {/* MODAL: LINE UP */}
       <div className="modal fade" id="bandModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div className="modal-content">
+          <div className="modal-content bg-dark">
             <div className="modal-header border-0">
-              <h5 className="modal-title text-danger fw-bold">🎵 LINE UP & EN VIVO</h5>
+              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-music-note-list me-2"></i> LINE UP & EN VIVO</h5>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div className="modal-body text-center">
               <div className="mb-4 p-3 rounded-4" style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid var(--rojo-neon)' }}>
-                <h6 className="text-white fw-bold mb-1">🎤 ARTISTA INVITADO</h6>
+                <h6 className="text-white fw-bold mb-1"><i className="bi bi-mic-fill me-2"></i> ARTISTA INVITADO</h6>
                 <h3 className="text-danger fw-black text-uppercase" style={{ textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>LOS REYES DEL RITMO</h3>
                 <p className="text-muted small m-0">Tocando todos sus éxitos totalmente en vivo a la medianoche.</p>
               </div>
               
-              <h6 className="text-white fw-bold mb-3 text-start border-bottom border-danger pb-2">🎧 DJs RESIDENTES</h6>
+              <h6 className="text-white fw-bold mb-3 text-start border-bottom border-danger pb-2"><i className="bi bi-headphones me-2"></i> DJs RESIDENTES</h6>
               
               <div className="d-flex align-items-center gap-3 mb-3 text-start">
-                <div className="bg-dark rounded-circle d-flex align-items-center justify-content-center border border-danger" style={{ width: '50px', height: '50px' }}>
+                <div className="bg-black rounded-circle d-flex align-items-center justify-content-center border border-danger" style={{ width: '50px', height: '50px' }}>
                   <i className="bi bi-disc text-danger fs-4"></i>
                 </div>
                 <div>
@@ -245,7 +249,7 @@ function App() {
               </div>
 
               <div className="d-flex align-items-center gap-3 mb-2 text-start">
-                <div className="bg-dark rounded-circle d-flex align-items-center justify-content-center border border-danger" style={{ width: '50px', height: '50px' }}>
+                <div className="bg-black rounded-circle d-flex align-items-center justify-content-center border border-danger" style={{ width: '50px', height: '50px' }}>
                   <i className="bi bi-speaker text-danger fs-4"></i>
                 </div>
                 <div>
@@ -261,9 +265,9 @@ function App() {
       {/* MODAL: STAFF RRPP */}
       <div className="modal fade" id="staffModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div className="modal-content">
+          <div className="modal-content bg-dark">
             <div className="modal-header border-0">
-              <h5 className="modal-title text-danger fw-bold">👥 NUESTRO STAFF RRPP</h5>
+              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-people-fill me-2"></i> NUESTRO STAFF RRPP</h5>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div className="modal-body">
@@ -291,9 +295,9 @@ function App() {
       {/* MODAL: CUMPLEAÑEROS LABUBU */}
       <div className="modal fade" id="cumpleModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
+          <div className="modal-content bg-dark">
             <div className="modal-header border-0">
-              <h5 className="modal-title text-danger fw-bold">🎈 LABUBU CUMPLEAÑEROS</h5>
+              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-gift-fill me-2"></i> LABUBU CUMPLEAÑEROS</h5>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div className="modal-body text-center">
@@ -301,11 +305,11 @@ function App() {
               <form onSubmit={handleCumple} className="text-start">
                 <div className="mb-3">
                   <label className="form-label text-white small">Nombre del Cumpleañero:</label>
-                  <input type="text" className="form-control custom-input" placeholder="Ej: Maria Belen" required value={cumpleForm.nombre} onChange={e => setCumpleForm({...cumpleForm, nombre: e.target.value})}/>
+                  <input type="text" className="form-control custom-input bg-black text-white border-secondary" placeholder="Ej: Maria Belen" required value={cumpleForm.nombre} onChange={e => setCumpleForm({...cumpleForm, nombre: e.target.value})}/>
                 </div>
                 <div className="mb-4">
                   <label className="form-label text-white small">Elige tu Shot de Cortesía:</label>
-                  <select className="form-select custom-input" value={cumpleForm.shot} onChange={e => setCumpleForm({...cumpleForm, shot: e.target.value})}>
+                  <select className="form-select custom-input bg-black text-white border-secondary" value={cumpleForm.shot} onChange={e => setCumpleForm({...cumpleForm, shot: e.target.value})}>
                     <option value="Tequila">Tequila Dorado</option>
                     <option value="Jägermeister">Jägermeister Frio</option>
                     <option value="Vodka">Vodka Negro</option>
@@ -322,26 +326,26 @@ function App() {
       {/* MODAL: BAR SORPRESA */}
       <div className="modal fade" id="barModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div className="modal-content">
+          <div className="modal-content bg-dark">
             <div className="modal-header border-0">
-              <h5 className="modal-title text-danger fw-bold">🍸 BAR SORPRESA</h5>
+              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-cup-straw me-2"></i> BAR SORPRESA</h5>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div className="modal-body">
               <p className="text-muted small text-center mb-4">Tragos explosivos preparados en vivo por nuestros bartenders.</p>
               
-              <div className="drink-card">
-                <div className="drink-title"><i className="bi bi-fire"></i> BEBIDA DINAMITA</div>
+              <div className="drink-card p-3 mb-3 border border-danger rounded-3" style={{ background: 'rgba(255,0,0,0.05)' }}>
+                <div className="drink-title fw-bold text-danger"><i className="bi bi-fire me-2"></i> BEBIDA DINAMITA</div>
                 <div className="small text-white mt-1">Mezcla explosiva de licores fuertes encendidos en fuego. Tómalo de un solo golpe.</div>
               </div>
 
-              <div className="drink-card border-warning">
-                <div className="drink-title text-warning"><i className="bi bi-cloud-haze2"></i> GAS LACRIMÓGENO</div>
+              <div className="drink-card p-3 mb-3 border border-warning rounded-3" style={{ background: 'rgba(255,255,0,0.05)' }}>
+                <div className="drink-title text-warning fw-bold"><i className="bi bi-cloud-haze2 me-2"></i> GAS LACRIMÓGENO</div>
                 <div className="small text-white mt-1">Trago ahumado con hielo seco y sabor ácido intenso. Te hará llorar pero pedirás más.</div>
               </div>
 
-              <div className="drink-card border-info">
-                <div className="drink-title text-info"><i className="bi bi-unlock-fill"></i> BEBIDA DESBLOQUEO</div>
+              <div className="drink-card p-3 mb-3 border border-info rounded-3" style={{ background: 'rgba(0,255,255,0.05)' }}>
+                <div className="drink-title text-info fw-bold"><i className="bi bi-unlock-fill me-2"></i> BEBIDA DESBLOQUEO</div>
                 <div className="small text-white mt-1">El elixir ideal para quitar la timidez. Suave, frutal pero engañoso.</div>
               </div>
             </div>
@@ -352,15 +356,15 @@ function App() {
       {/* MODAL: PRÓXIMOS EVENTOS */}
       <div className="modal fade" id="nextEventsModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
+          <div className="modal-content bg-dark">
             <div className="modal-header border-0">
-              <h5 className="modal-title text-danger fw-bold">🚀 PRÓXIMOS EVENTOS</h5>
+              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-rocket-takeoff-fill me-2"></i> PRÓXIMOS EVENTOS</h5>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <div className="modal-body text-center">
-              <i className="bi bi-calendar2-x text-muted" style={{fontSize: '3rem'}}></i>
-              <h6 className="mt-3 text-white">Pronto revelaremos más locuras...</h6>
-              <p className="small text-muted">Mantente atento a las redes de <strong>LABUBU EVENTS</strong> para enterarte de nuestra próxima gran temática.</p>
+            <div className="modal-body text-center py-5">
+              <i className="bi bi-calendar-x text-muted" style={{fontSize: '3rem'}}></i>
+              <h6 className="mt-3 text-white fw-bold">Pronto revelaremos más locuras...</h6>
+              <p className="small text-muted mt-2">Mantente atento a las redes de <strong>LABUBU EVENTS</strong> para enterarte de nuestra próxima gran temática.</p>
             </div>
           </div>
         </div>

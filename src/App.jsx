@@ -33,6 +33,7 @@ function App() {
   }, [targetDate]);
 
   // FORMULARIO CUMPLEAÑEROS
+  const [menuAbierto, setMenuAbierto] = useState(false);
   const [cumpleForm, setCumpleForm] = useState({ nombre: '', shot: 'Tequila' });
 
   const handleCumple = (e) => {
@@ -97,22 +98,94 @@ function App() {
   return (
     <div className="app-container px-3 overflow-hidden">
       
-      {/* NAVBAR SUPERIOR BOOTSTRAP */}
-      <nav className="navbar navbar-dark fixed-top custom-navbar px-3">
-        <a className="navbar-brand text-white fw-bold" style={{letterSpacing: '2px'}} href="#top">
-          <i className="bi bi-mask text-danger me-2"></i> LABUBU
-        </a>
-        <button className="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span className="custom-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto text-end mt-2">
-            <li className="nav-item"><a className="nav-link" href="#top" data-bs-toggle="modal" data-bs-target="#eventModal">Info Evento</a></li>
-            <li className="nav-item"><a className="nav-link" href="#top" data-bs-toggle="modal" data-bs-target="#staffModal">Nuestro Staff</a></li>
-            <li className="nav-item"><a className="nav-link" href="#top" data-bs-toggle="modal" data-bs-target="#barModal">Bar Sorpresa</a></li>
-          </ul>
-        </div>
-      </nav>
+{/* NAVBAR SUPERIOR - MENÚ COMPACTO SIEMPRE FLOTANTE (PC Y CELULAR) */}
+<nav className="navbar navbar-dark fixed-top px-3 py-2.5" 
+     style={{ 
+       background: 'rgba(10, 10, 10, 0.8)', 
+       backdropFilter: 'blur(15px)',
+       borderBottom: '1px solid rgba(255, 0, 68, 0.15)',
+       zIndex: 1050
+     }}>
+  <div className="container-fluid px-0 position-relative">
+    
+    {/* BRAND / LOGO */}
+    <a className="navbar-brand text-white fw-black tracking-widest m-0 d-flex align-items-center gap-2" 
+       style={{ fontSize: '1.1rem', letterSpacing: '2px' }} 
+       href="#top"
+    >
+      <span className="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-20 px-2 py-1 rounded-3">
+        <i className="bi bi-mask"></i>
+      </span>
+      <span>LABUBU</span>
+    </a>
+    
+    {/* BOTÓN HAMBURGUESA - CONTROLADO POR REACT */}
+    <button 
+      className="navbar-toggler border-0 p-2" 
+      type="button" 
+      onClick={() => setMenuAbierto(!menuAbierto)}
+      style={{ background: 'rgba(255, 255, 255, 0.05)', borderRadius: '10px' }}
+    >
+      <span className="navbar-toggler-icon" style={{ filter: 'invert(1) sepia(1) saturate(5) hue-rotate(330deg)' }}></span>
+    </button>
+    
+    {/* MENÚ DESPLEGABLE ESTILO TARJETA PREMIUM (Controlado por el estado de React) */}
+    <div className={`position-absolute end-0 ${menuAbierto ? 'd-block' : 'd-none'}`} 
+         style={{ 
+           top: '100%', 
+           width: '260px', 
+           marginTop: '10px',
+           background: 'rgba(15, 15, 15, 0.98)',
+           backdropFilter: 'blur(10px)',
+           border: '1px solid rgba(255, 0, 68, 0.25)',
+           borderRadius: '16px',
+           padding: '12px',
+           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.7)',
+           zIndex: 1100
+         }}>
+      <ul className="navbar-nav d-flex flex-column gap-1 text-start m-0 p-0">
+        
+        <li className="nav-item">
+          <a className="nav-link text-white-50 fw-semibold text-uppercase tracking-wider px-3 py-2.5 rounded-3 d-flex align-items-center gap-2 menu-fixed-link" 
+             href="#top" 
+             onClick={() => setMenuAbierto(false)} // Cierra el menú al hacer clic
+             data-bs-toggle="modal" 
+             data-bs-target="#eventModal"
+          >
+            <i className="bi bi-calendar-event text-danger fs-5"></i>
+            <span>Yalember</span>
+          </a>
+        </li>
+
+        <li className="nav-item">
+          <a className="nav-link text-white-50 fw-semibold text-uppercase tracking-wider px-3 py-2.5 rounded-3 d-flex align-items-center gap-2 menu-fixed-link" 
+             href="#top" 
+             onClick={() => setMenuAbierto(false)}
+             data-bs-toggle="modal" 
+             data-bs-target="#staffModal"
+          >
+            <i className="bi bi-people text-danger fs-5"></i>
+            <span>Nuestro Staff</span>
+          </a>
+        </li>
+
+        <li className="nav-item">
+          <a className="nav-link text-white-50 fw-semibold text-uppercase tracking-wider px-3 py-2.5 rounded-3 d-flex align-items-center gap-2 menu-fixed-link" 
+             href="#top" 
+             onClick={() => setMenuAbierto(false)}
+             data-bs-toggle="modal" 
+             data-bs-target="#barModal"
+          >
+            <i className="bi bi-cup-straw text-danger fs-5"></i>
+            <span>Bar Sorpresa</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
 
       {/* CABECERA (HERO) */}
       <div className="text-center mb-3 mt-5 pt-5">
@@ -198,23 +271,73 @@ function App() {
           <span>Próximos EVENTOS</span>
         </div>
       </div>
+{/* REDES SOCIALES */}
+<div className="text-center mt-5 mb-5 pb-5 sponsors-wrapper">
+  {/* Subtítulo elegante */}
+  <p className="text-secondary fw-bold text-uppercase tracking-widest mb-3" style={{ fontSize: '0.65rem', letterSpacing: '3px' }}>
+    Síguenos y contáctanos
+  </p>
+  
+  {/* Contenedor de botones flotantes */}
+  <div className="d-flex justify-content-center gap-3">
+    
+    {/* TIKTOK */}
+    <a 
+      href="TU_ENLACE_TIKTOK" 
+      target="_blank" 
+      rel="noreferrer" 
+      className="d-flex align-items-center justify-content-center rounded-circle text-white shadow-sm social-link-btn"
+      style={{ 
+        width: '50px', 
+        height: '50px', 
+        background: 'rgba(255, 255, 255, 0.05)', 
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+      }}
+    >
+      <i className="bi bi-tiktok fs-4"></i>
+    </a>
 
-     {/* REDES SOCIALES */}
-      <div className="text-center mt-5 mb-5 pb-5 sponsors-wrapper">
-        <p className="small text-muted mb-2 text-uppercase" style={{ fontSize: '0.7rem', letterSpacing: '2px' }}>Síguenos y contáctanos</p>
-        <div className="d-flex justify-content-center gap-4 text-secondary">
-          <a href="TU_ENLACE_TIKTOK" target="_blank" rel="noreferrer" className="text-white hover-danger transition-all">
-            <i className="bi bi-tiktok fs-3 sponsor-icon"></i>
-          </a>
-          <a href="TU_ENLACE_WHATSAPP" target="_blank" rel="noreferrer" className="text-success hover-danger transition-all">
-            <i className="bi bi-whatsapp fs-3 sponsor-icon"></i>
-          </a>
-        </div>
-      </div>
+    {/* INSTAGRAM (Opcional, pero ideal para eventos) */}
+    <a 
+      href="TU_ENLACE_INSTAGRAM" 
+      target="_blank" 
+      rel="noreferrer" 
+      className="d-flex align-items-center justify-content-center rounded-circle text-white shadow-sm social-link-btn"
+      style={{ 
+        width: '50px', 
+        height: '50px', 
+        background: 'rgba(255, 255, 255, 0.05)', 
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+      }}
+    >
+      <i className="bi bi-instagram fs-4"></i>
+    </a>
+
+    {/* WHATSAPP */}
+    <a 
+      href="https://api.whatsapp.com/send?phone=59176597401" 
+      target="_blank" 
+      rel="noreferrer" 
+      className="d-flex align-items-center justify-content-center rounded-circle text-white shadow-sm social-link-btn"
+      style={{ 
+        width: '50px', 
+        height: '50px', 
+        background: 'rgba(255, 255, 255, 0.05)', 
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+      }}
+    >
+      <i className="bi bi-whatsapp fs-4"></i>
+    </a>
+
+  </div>
+</div>
 
       {/* BOTÓN FLOTANTE CONFIRMACIÓN */}
       <div className="cta-floating fixed-bottom p-3" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)' }}>
-        <a href="https://wa.me/59176597401?text=Hola%20LABUBU!%20Quiero%20asistir%20a%20YALEMBER" target="_blank" rel="noreferrer" className="btn btn-danger w-100 d-flex align-items-center justify-content-center gap-2 py-2 fw-bold rounded-pill shadow">
+        <a href="https://wa.me/59176597401?text=Hola%20!%20Quiero%20asistir%20a%20YALEMBER" target="_blank" rel="noreferrer" className="btn btn-danger w-100 d-flex align-items-center justify-content-center gap-2 py-2 fw-bold rounded-pill shadow">
           <i className="bi bi-check2-square fs-5"></i> Confirmar Asistencia
         </a>
       </div>
@@ -224,134 +347,194 @@ function App() {
           ============================================== */}
 
  {/* MODAL: EL EVENTO */}
-      <div className="modal fade" id="eventModal" tabIndex="-1" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div className="modal-content bg-dark" style={{ border: '1px solid rgba(255,0,68,0.2)' }}>
-            <div className="modal-header border-0 pb-0">
-              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-calendar-event-fill me-2"></i> EL EVENTO</h5>
-              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+<div className="modal fade" id="eventModal" tabIndex="-1" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div className="modal-content border-0 bg-dark text-white shadow-2xl" style={{ borderRadius: '24px', overflow: 'hidden' }}>
+      
+      {/* Header minimalista */}
+      <div className="modal-header border-0 px-4 pt-4 pb-2 d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center gap-2">
+          <span className="badge bg-danger-subtle text-danger px-2 py-1 rounded-3 fs-6">
+            <i className="bi bi-calendar-event-fill"></i>
+          </span>
+          <h5 className="modal-title fw-bold tracking-wider m-0 text-uppercase small">El Evento</h5>
+        </div>
+        <button type="button" className="btn-close btn-close-white opacity-75" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div className="modal-body px-4 pb-4 text-center">
+        
+        {/* Imagen del Evento Principal */}
+        <div className="position-relative mb-4 overflow-hidden rounded-4 shadow">
+          <img 
+            src={imagenInfoEvento} 
+            alt="Información del Evento" 
+            className="img-fluid w-100 object-fit-cover"
+          />
+        </div>
+        
+        {/* Intro */}
+        <h6 className="text-white fw-bold text-uppercase tracking-widest small mb-2">La Fiesta Más Exclusiva</h6>
+        <p className="text-white-50 small px-2 mb-4" style={{ lineHeight: '1.6' }}>
+          Prepárate para una noche inolvidable. YALEMBER llega con una producción de primer nivel, luces láser, sonido envolvente y el mejor ambiente de la ciudad.
+        </p>
+        
+        {/* BLOQUES DE INFORMACIÓN (Glassmorphism / Neon sutil) */}
+        <div className="d-flex flex-column gap-2.5 mb-4">
+          
+          {/* FECHA */}
+          <div className="d-flex align-items-center p-3 rounded-4 bg-secondary bg-opacity-10 border border-secondary border-opacity-10">
+            <div className="bg-danger bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center border border-danger border-opacity-20 shadow-sm" style={{ width: '48px', height: '48px', minWidth: '48px' }}>
+              <i className="bi bi-calendar-check-fill text-danger fs-5"></i>
             </div>
-            
-            <div className="modal-body text-center pt-2">
-              <img src={imagenInfoEvento} alt="Información del Evento" className="img-fluid rounded-4 mb-4 shadow-lg" style={{ border: '2px solid rgba(255,0,68,0.3)' }} />
-              
-              <h6 className="text-white fw-bold text-uppercase tracking-wider mb-2" style={{ letterSpacing: '1px' }}>La Fiesta Más Exclusiva</h6>
-              <p className="text-muted small px-2 mb-4">Prepárate para una noche inolvidable. YALEMBER llega con una producción de primer nivel, luces láser, sonido envolvente y el mejor ambiente de la ciudad.</p>
-              
-              {/* BLOQUES DE INFORMACIÓN ESTILO BOTONES/WIDGETS */}
-              <div className="d-flex flex-column gap-2 mb-4">
-                
-                {/* NUEVO BLOQUE: DÍA / FECHA */}
-                <div className="d-flex align-items-center p-3 rounded-4" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <div className="bg-danger rounded-circle d-flex justify-content-center align-items-center me-3 shadow" style={{ width: '45px', height: '45px' }}>
-                    <i className="bi bi-calendar-check-fill text-white fs-5"></i>
-                  </div>
-                  <div className="text-start">
-                    <small className="d-block text-danger fw-bold" style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>DÍA DEL EVENTO</small>
-                    <span className="text-white fw-semibold small">Viernes, 12 de Junio</span>
-                  </div>
-                </div>
+            <div className="text-start ms-3">
+              <small className="d-block text-danger fw-bold tracking-wider uppercase" style={{ fontSize: '0.65rem' }}>DÍA DEL EVENTO</small>
+              <span className="text-white fw-semibold small">Viernes, 12 de Junio</span>
+            </div>
+          </div>
 
-                <div className="d-flex align-items-center p-3 rounded-4" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <div className="bg-danger rounded-circle d-flex justify-content-center align-items-center me-3 shadow" style={{ width: '45px', height: '45px' }}>
-                    <i className="bi bi-geo-alt-fill text-white fs-5"></i>
-                  </div>
-                  <div className="text-start">
-                    <small className="d-block text-danger fw-bold" style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>LUGAR</small>
-                    <span className="text-white fw-semibold small">SALON FANTASIO (Camacho, Esq. Colón)</span>
-                  </div>
-                </div>
+          {/* LUGAR */}
+          <div className="d-flex align-items-center p-3 rounded-4 bg-secondary bg-opacity-10 border border-secondary border-opacity-10">
+            <div className="bg-danger bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center border border-danger border-opacity-20 shadow-sm" style={{ width: '48px', height: '48px', minWidth: '48px' }}>
+              <i className="bi bi-geo-alt-fill text-danger fs-5"></i>
+            </div>
+            <div className="text-start ms-3">
+              <small className="d-block text-danger fw-bold tracking-wider uppercase" style={{ fontSize: '0.65rem' }}>LUGAR</small>
+              <span className="text-white fw-semibold small">SALON FANTASIO (Camacho, Esq. Colón)</span>
+            </div>
+          </div>
 
-                <div className="d-flex align-items-center p-3 rounded-4" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <div className="bg-danger rounded-circle d-flex justify-content-center align-items-center me-3 shadow" style={{ width: '45px', height: '45px' }}>
-                    <i className="bi bi-clock-fill text-white fs-5"></i>
-                  </div>
-                  <div className="text-start">
-                    <small className="d-block text-danger fw-bold" style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>APERTURA</small>
-                    <span className="text-white fw-semibold small">16:00 Hrs - Llega temprano</span>
-                  </div>
-                </div>
+          {/* APERTURA */}
+          <div className="d-flex align-items-center p-3 rounded-4 bg-secondary bg-opacity-10 border border-secondary border-opacity-10">
+            <div className="bg-danger bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center border border-danger border-opacity-20 shadow-sm" style={{ width: '48px', height: '48px', minWidth: '48px' }}>
+              <i className="bi bi-clock-fill text-danger fs-5"></i>
+            </div>
+            <div className="text-start ms-3">
+              <small className="d-block text-danger fw-bold tracking-wider uppercase" style={{ fontSize: '0.65rem' }}>APERTURA</small>
+              <span className="text-white fw-semibold small">16:00 Hrs - Llega temprano</span>
+            </div>
+          </div>
 
-                <div className="d-flex align-items-center p-3 rounded-4" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <div className="bg-danger rounded-circle d-flex justify-content-center align-items-center me-3 shadow" style={{ width: '45px', height: '45px' }}>
-                    <i className="bi bi-stars text-white fs-5"></i>
-                  </div>
-                  <div className="text-start">
-                    <small className="d-block text-danger fw-bold" style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>DRESS CODE</small>
-                    <span className="text-white fw-semibold small">Casual / Prepara tu mejor outfit</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* ALERTA DE INGRESO */}
-              <div className="alert p-3 rounded-4 text-start d-flex gap-3 align-items-center mb-4" style={{ background: 'rgba(255, 193, 7, 0.1)', border: '1px solid rgba(255, 193, 7, 0.3)' }}>
-                <i className="bi bi-exclamation-triangle-fill text-warning fs-3"></i>
-                <div style={{ fontSize: '0.8rem' }}>
-                  <strong className="text-warning d-block mb-1">REGLAS DE INGRESO (+18)</strong>
-                  <span className="text-white-50">Ingreso únicamente con Carnet de Identidad original vigente. Nos reservamos el derecho de admisión.</span>
-                </div>
-              </div>
-
-              {/* MAPA VISUAL CON BOTÓN SUPERPUESTO */}
-              <div className="position-relative rounded-4 overflow-hidden border border-danger shadow-lg mt-2" style={{ height: '140px', background: '#000' }}>
-                <img 
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" 
-                  alt="Mapa de Ubicación" 
-                  className="w-100 h-100 object-fit-cover opacity-50" 
-                />
-                <div className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center" style={{ background: 'rgba(0,0,0,0.3)' }}>
-                  <h6 className="text-white fw-bold mb-2 text-shadow">¿No sabes cómo llegar?</h6>
-                  <a href="https://maps.app.goo.gl/n1AVcJWxDTM2sVUN8?g_st=ac" target="_blank" rel="noreferrer" className="btn btn-danger rounded-pill fw-bold px-4 py-2 shadow-lg hover-scale transition-all">
-                    <i className="bi bi-geo-alt-fill me-2"></i> Abrir en Google Maps
-                  </a>
-                </div>
-              </div>
-
+          {/* DRESS CODE */}
+          <div className="d-flex align-items-center p-3 rounded-4 bg-secondary bg-opacity-10 border border-secondary border-opacity-10">
+            <div className="bg-danger bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center border border-danger border-opacity-20 shadow-sm" style={{ width: '48px', height: '48px', minWidth: '48px' }}>
+              <i className="bi bi-stars text-danger fs-5"></i>
+            </div>
+            <div className="text-start ms-3">
+              <small className="d-block text-danger fw-bold tracking-wider uppercase" style={{ fontSize: '0.65rem' }}>DRESS CODE</small>
+              <span className="text-white fw-semibold small">Casual / Prepara tu mejor outfit</span>
             </div>
           </div>
         </div>
+
+        {/* ALERTA DE INGRESO (+18 MODERNO) */}
+        <div className="p-3 rounded-4 text-start d-flex gap-3 align-items-center mb-4" 
+             style={{ 
+               background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.05) 0%, rgba(0, 0, 0, 0.4) 100%)', 
+               border: '1px solid rgba(255, 193, 7, 0.2)',
+               backdropFilter: 'blur(10px)'
+             }}>
+          <div className="bg-warning bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center" style={{ width: '42px', height: '42px', minWidth: '42px' }}>
+            <i className="bi bi-exclamation-triangle-fill text-warning fs-5"></i>
+          </div>
+          <div style={{ fontSize: '0.8rem' }}>
+            <strong className="text-warning d-block mb-0.5 tracking-wide small uppercase">REGLAS DE INGRESO (+18)</strong>
+            <span className="text-white-50">Ingreso únicamente con Carnet de Identidad original vigente. Nos reservamos el derecho de admisión.</span>
+          </div>
+        </div>
+
+        {/* MAPA VISUAL CON DISEÑO INTEGRADO */}
+        <div className="position-relative rounded-4 overflow-hidden shadow-lg mt-2" style={{ height: '150px', background: '#000', border: '1px solid rgba(255, 0, 68, 0.15)' }}>
+          <img 
+            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" 
+            alt="Mapa de Ubicación" 
+            className="w-100 h-100 object-fit-cover opacity-40" 
+            style={{ filter: 'grayscale(30%)' }}
+          />
+          <div className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3))' }}>
+            <h6 className="text-white fw-bold mb-2 small tracking-wide">¿No sabes cómo llegar?</h6>
+            <a href="https://maps.app.goo.gl/n1AVcJWxDTM2sVUN8?g_st=ac" target="_blank" rel="noreferrer" className="btn btn-danger rounded-pill fw-bold px-4 py-2 small shadow-sm" style={{ fontSize: '0.85rem', transition: 'all 0.2s ease-in-out' }}>
+              <i className="bi bi-geo-alt-fill me-1.5"></i> Abrir en Google Maps
+            </a>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </div>
+</div>
 
    {/* MODAL: LINE UP */}
-      <div className="modal fade" id="bandModal" tabIndex="-1" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div className="modal-content bg-dark">
-            <div className="modal-header border-0">
-              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-music-note-list me-2"></i> LINE UP & EN VIVO</h5>
-              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div className="modal-body text-center">
-              
-              {/* IMAGEN AÑADIDA AQUÍ */}
-              <img src={imagenInfoEvento} alt="Line Up del Evento" className="img-fluid rounded-4 mb-3 shadow-lg" style={{ border: '1px solid rgba(255,0,68,0.3)' }} />
-              
-              <div className="mb-4 p-3 rounded-4" style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid var(--rojo-neon)' }}>
-                <h6 className="text-white fw-bold mb-1"><i className="bi bi-mic-fill me-2"></i> ARTISTA INVITADO</h6>
-                <h3 className="text-danger fw-black text-uppercase" style={{ textShadow: '0 0 10px rgba(255,0,68,0.5)' }}>KUMBIA DALE</h3>
-                <p className="text-muted small m-0">Tocando todos sus éxitos totalmente en vivo a la medianoche.</p>
-              </div>
-              
-              <h6 className="text-white fw-bold mb-3 text-start border-bottom border-danger pb-2"><i className="bi bi-headphones me-2"></i> DJs RESIDENTES</h6>
-              
-              <div className="d-flex align-items-center gap-3 mb-3 text-start">
-                <div className="bg-black rounded-circle d-flex align-items-center justify-content-center border border-danger" style={{ width: '50px', height: '50px' }}>
-                  <i className="bi bi-disc text-danger fs-4"></i>
-                </div>
-                <div>
-                  <h6 className="m-0 text-white">DJ FANTASIO</h6>
-                  <small className="text-muted">Reggaeton Old School & Perreo</small>
-                </div>
-              </div>
-
-              <div className="d-flex align-items-center gap-3 mb-2 text-start">
-                <div className="bg-black rounded-circle d-flex align-items-center justify-content-center border border-danger" style={{ width: '50px', height: '50px' }}>
-                  <i className="bi bi-speaker text-danger fs-4"></i>
-                </div>
-              </div>
-            </div>
-          </div>s
+<div className="modal fade" id="bandModal" tabIndex="-1" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div className="modal-content border-0 bg-dark text-white shadow-2xl" style={{ borderRadius: '24px', overflow: 'hidden' }}>
+      
+      {/* Header con diseño minimalista */}
+      <div className="modal-header border-0 px-4 pt-4 pb-2 d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center gap-2">
+          <span className="badge bg-danger-subtle text-danger px-2 py-1 rounded-3 fs-6">
+            <i className="bi bi-music-note-list"></i>
+          </span>
+          <h5 className="modal-title fw-bold tracking-wider m-0 text-uppercase small">Line Up & En Vivo</h5>
         </div>
+        <button type="button" className="btn-close btn-close-white opacity-75" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
+      <div className="modal-body px-4 pb-4">
+        
+        {/* Imagen del Evento Principal */}
+        <div className="position-relative mb-4 overflow-hidden rounded-4 shadow">
+          <img 
+            src={imagenInfoEvento} 
+            alt="Line Up del Evento" 
+            className="img-fluid w-100 object-fit-cover"
+            style={{ transition: 'transform 0.3s ease' }}
+          />
+        </div>
+        
+        {/* Tarjeta de Artista Invitado (Glassmorphism) */}
+        <div className="mb-4 p-4 rounded-4 position-relative overflow-hidden" 
+             style={{ 
+               background: 'linear-gradient(135deg, rgba(255, 0, 68, 0.1) 0%, rgba(0, 0, 0, 0.6) 100%)', 
+               border: '1px solid rgba(255, 0, 68, 0.2)',
+               backdropFilter: 'blur(10px)'
+             }}>
+          <span className="text-danger fw-semibold tracking-widest uppercase small mb-2 d-block">
+            <i className="bi bi-mic-fill me-1"></i> Artista Invitado
+          </span>
+          <h2 className="fw-black text-white m-0 tracking-tight" style={{ fontSize: '2.25rem', letterSpacing: '-0.5px' }}>
+            KUMBIA DALE
+          </h2>
+          <div className="mt-2 text-white-50 small">
+            <i className="bi bi-clock me-1"></i> Medianoche <span className="mx-1">•</span> En Vivo
+          </div>
+        </div>
+        
+        {/* Sección de DJs */}
+        <div className="mt-4">
+          <div className="d-flex align-items-center justify-content-between border-bottom border-secondary border-opacity-25 pb-2 mb-3">
+            <h6 className="fw-bold m-0 text-secondary text-uppercase small tracking-wider">
+              <i className="bi bi-headphones me-2 text-danger"></i> Resident DJ
+            </h6>
+          </div>
+          
+          {/* Tarjeta DJ Único */}
+          <div className="d-flex align-items-center gap-3 p-3 rounded-4 bg-secondary bg-opacity-10 border border-secondary border-opacity-10">
+            <div className="bg-danger bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center border border-danger border-opacity-20 shadow-sm" 
+                 style={{ width: '56px', height: '56px', minWidth: '56px' }}>
+              <i className="bi bi-disc text-danger fs-3 animate-spin"></i>
+            </div>
+            <div>
+              <h6 className="m-0 fw-bold text-white tracking-wide">DJ FANTASIO</h6>
+              <p className="m-0 text-white-50 small mt-0.5">Reggaeton Old School & Perreo</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
       {/* MODAL: STAFF RRPP */}
       <div className="modal fade" id="staffModal" tabIndex="-1" aria-hidden="true">
@@ -384,128 +567,266 @@ function App() {
       </div>
 
 {/* MODAL: CUMPLEAÑEROS LABUBU */}
-      <div className="modal fade" id="cumpleModal" tabIndex="-1" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content bg-dark" style={{ border: '1px solid rgba(255,0,68,0.2)' }}>
-            <div className="modal-header border-0 pb-0">
-              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-gift-fill me-2"></i> LABUBU CUMPLEAÑEROS</h5>
-              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
+<div className="modal fade" id="cumpleModal" tabIndex="-1" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-scrollable">
+    
+    <div className="modal-content border-0 bg-dark text-white shadow-2xl" style={{ borderRadius: '24px', overflow: 'hidden' }}>
+      
+      {/* Header minimalista */}
+      <div className="modal-header border-0 px-4 pt-4 pb-2 d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center gap-2">
+          <span className="badge bg-danger-subtle text-danger px-2 py-1 rounded-3 fs-6">
+            <i className="bi bi-gift-fill"></i>
+          </span>
+          <h5 className="modal-title fw-bold tracking-wider m-0 text-uppercase small">Labubu Cumpleañeros</h5>
+        </div>
+        <button type="button" className="btn-close btn-close-white opacity-75" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div className="modal-body px-4 pb-4">
+        {/* TÍTULO DE BIENVENIDA */}
+        <h6 className="text-white fw-bold text-uppercase tracking-widest small text-center mb-3 px-2" style={{ lineHeight: '1.4' }}>
+          Festeja tu cumpleaños con Labubu Events en el Yalember
+        </h6>
+        
+        {/* TARJETA DE BENEFICIOS (Glassmorphism / Red Neon) */}
+        <div className="p-4 rounded-4 mb-4 position-relative overflow-hidden" 
+             style={{ 
+               background: 'linear-gradient(135deg, rgba(255, 0, 68, 0.1) 0%, rgba(0, 0, 0, 0.6) 100%)', 
+               border: '1px solid rgba(255, 0, 68, 0.2)',
+               backdropFilter: 'blur(10px)'
+             }}>
+          <span className="text-danger fw-semibold tracking-wider small mb-2 d-block text-uppercase">
+            <i className="bi bi-stars me-1"></i> Tus Beneficios del Mes:
+          </span>
+          <ul className="list-unstyled m-0 text-white-50 small d-flex flex-column gap-2" style={{ lineHeight: '1.5' }}>
+            <li className="d-flex align-items-start gap-2">
+              <i className="bi bi-check2-circle text-danger mt-0.5"></i>
+              <span>Tu ingreso es <strong className="text-white">TOTALMENTE GRATIS</strong>.</span>
+            </li>
+            <li className="d-flex align-items-start gap-2">
+              <i className="bi bi-check2-circle text-danger mt-0.5"></i>
+              <span>Tienes <strong className="text-white">+1 Invitación VIP</strong> para tu acompañante.</span>
+            </li>
+            <li className="d-flex align-items-start gap-2">
+              <i className="bi bi-check2-circle text-danger mt-0.5"></i>
+              <span>Te regalamos <strong className="text-white">1 Shot de cortesía</strong> en la barra.</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* FORMULARIO CON ENVÍO A WHATSAPP */}
+        <form 
+          onSubmit={(e) => {
+            e.preventDefault();
             
-            <div className="modal-body text-center pt-2">
-              {/* TÍTULO DE BIENVENIDA */}
-              <h6 className="text-white fw-black text-uppercase tracking-wider mb-3 px-2" style={{ fontSize: '0.95rem', letterSpacing: '1px', color: 'var(--rojo-neon)' }}>
-                 FESTEJA TU CUMPLEAÑOS CON LABUBU EVENTS EN EL YALEMBER 
-              </h6>
-              
-              {/* TARJETA DE BENEFICIOS */}
-              <div className="p-3 rounded-4 text-start mb-4 shadow-sm" style={{ background: 'rgba(255, 0, 64, 0.08)', border: '1px solid rgba(255, 0, 64, 0.25)' }}>
-                <span className="d-block text-danger fw-bold small mb-2"><i className="bi bi-stars"></i> TUS BENEFICIOS POR SER TU MES:</span>
-                <ul className="list-unstyled m-0 text-white-50 small d-flex flex-column gap-1">
-                  <li><i className="bi bi-check2 text-danger me-2"></i>Tu ingreso es <strong>TOTALMENTE GRATIS</strong>.</li>
-                  <li><i className="bi bi-check2 text-danger me-2"></i>Tienes <strong>+1 Invitación VIP</strong> para tu acompañante.</li>
-                  <li><i className="bi bi-check2 text-danger me-2"></i>Te regalamos <strong>1 Shot de cortesía</strong> en la barra.</li>
-                </ul>
-              </div>
-
-              {/* FORMULARIO */}
-              <form onSubmit={handleCumple} className="text-start px-1">
-                {/* CAMPO: NOMBRE */}
-                <div className="mb-3">
-                  <label className="form-label text-white-50 small fw-semibold">Nombre del Cumpleañero:</label>
-                  <input 
-                    type="text" 
-                    className="form-control custom-input bg-black text-white border-secondary rounded-3" 
-                    placeholder="Ej: Rodrigo Paz" 
-                    required 
-                    value={cumpleForm.nombre} 
-                    onChange={e => setCumpleForm({...cumpleForm, nombre: e.target.value})}
-                  />
-                </div>
-
-                {/* NUEVO CAMPO: FECHA DE NACIMIENTO */}
-                <div className="mb-3">
-                  <label className="form-label text-white-50 small fw-semibold">Fecha de Nacimiento:</label>
-                  <input 
-                    type="date" 
-                    className="form-control custom-input bg-black text-white border-secondary rounded-3" 
-                    required 
-                    value={cumpleForm.fechaNacimiento} 
-                    onChange={e => setCumpleForm({...cumpleForm, fechaNacimiento: e.target.value})}
-                  />
-                </div>
-
-                {/* CAMPO: SHOT */}
-                <div className="mb-4">
-                  <label className="form-label text-white-50 small fw-semibold">Elige tu Shot de Cortesía:</label>
-                  <select 
-                    className="form-select custom-input bg-black text-white border-secondary rounded-3" 
-                    value={cumpleForm.shot} 
-                    onChange={e => setCumpleForm({...cumpleForm, shot: e.target.value})}
-                  >
-                    <option value="Tequila">Tequila Dorado</option>
-                    <option value="Jägermeister">Jägermeister Frio</option>
-                    <option value="Vodka">Vodka Negro</option>
-                    <option value="Ron">Ron Fuego</option>
-                  </select>
-                </div>
-
-                {/* BOTÓN DE ACCIÓN */}
-                <button type="submit" className="btn btn-danger w-100 fw-bold rounded-pill py-2.5 shadow hover-scale transition-all">
-                  <i className="bi bi-balloon-heart-fill me-2"></i> Registrar mi Cumpleaños
-                </button>
-              </form>
-            </div>
+            // Reemplazar espacios y caracteres para la URL de WhatsApp
+            const telefono = "59176597401"; // Código de país para Bolivia + tu número
+            const textoMensaje = `¡Hola! Me gustaría registrar mi cumpleaños 🎉\n\n` +
+                                 `👤 *Nombre:* ${cumpleForm.nombre}\n` +
+                                 `📅 *Fecha de Nacimiento:* ${cumpleForm.fechaNacimiento}\n` +
+                                 `🍹 *Shot de Cortesía:* ${cumpleForm.shot || 'Tequila Dorado'}`;
+            
+            const urlWhatsapp = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(textoMensaje)}`;
+            
+            // Abre WhatsApp en una pestaña nueva
+            window.open(urlWhatsapp, '_blank');
+          }} 
+          className="text-start px-1"
+        >
+          {/* CAMPO: NOMBRE */}
+          <div className="mb-3">
+            <label className="form-label text-white-50 small fw-semibold tracking-wide uppercase" style={{ fontSize: '0.7rem' }}>
+              Nombre del Cumpleañero:
+            </label>
+            <input 
+              type="text" 
+              className="form-control bg-secondary bg-opacity-10 border border-secondary border-opacity-25 text-white rounded-3 px-3 py-2 small shadow-sm" 
+              placeholder="Ej: Rodrigo Paz" 
+              required 
+              style={{ transition: 'all 0.2s' }}
+              value={cumpleForm.nombre} 
+              onChange={e => setCumpleForm({...cumpleForm, nombre: e.target.value})}
+            />
           </div>
+
+          {/* CAMPO: FECHA DE NACIMIENTO */}
+          <div className="mb-3">
+            <label className="form-label text-white-50 small fw-semibold tracking-wide uppercase" style={{ fontSize: '0.7rem' }}>
+              Fecha de Nacimiento:
+            </label>
+            <input 
+              type="date" 
+              className="form-control bg-secondary bg-opacity-10 border border-secondary border-opacity-25 text-white rounded-3 px-3 py-2 small shadow-sm" 
+              required 
+              style={{ colorScheme: 'dark' }} // Hace que el calendario nativo sea oscuro
+              value={cumpleForm.fechaNacimiento} 
+              onChange={e => setCumpleForm({...cumpleForm, fechaNacimiento: e.target.value})}
+            />
+          </div>
+
+          {/* CAMPO: SHOT */}
+          <div className="mb-4">
+            <label className="form-label text-white-50 small fw-semibold tracking-wide uppercase" style={{ fontSize: '0.7rem' }}>
+              Elige tu Shot de Cortesía:
+            </label>
+            <select 
+              className="form-select bg-secondary bg-opacity-10 border border-secondary border-opacity-25 text-white rounded-3 px-3 py-2 small shadow-sm" 
+              value={cumpleForm.shot} 
+              onChange={e => setCumpleForm({...cumpleForm, shot: e.target.value})}
+            >
+              <option value="Tequila Dorado" className="bg-dark">Bebida Dinamita</option>
+              <option value="Jägermeister Frio" className="bg-dark">Bebida Gas Lágrimogeno</option>
+              <option value="Vodka Negro" className="bg-dark">Bebida Desbloqueo</option>
+              <option value="Ron Fuego" className="bg-dark">Bebida Explosiva</option>
+            </select>
+          </div>
+
+          {/* BOTÓN DE ACCIÓN WHATSAPP */}
+          <button type="submit" className="btn btn-danger w-100 fw-bold rounded-pill py-2.5 shadow-sm" style={{ fontSize: '0.9rem' }}>
+            <i className="bi bi-whatsapp me-2"></i> Enviar Registro por WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  {/* MODAL: BAR SORPRESA */}
+<div className="modal fade" id="barModal" tabIndex="-1" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div className="modal-content border-0 bg-dark text-white shadow-2xl" style={{ borderRadius: '24px', overflow: 'hidden' }}>
+      
+      {/* Header minimalista */}
+      <div className="modal-header border-0 px-4 pt-4 pb-2 d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center gap-2">
+          <span className="badge bg-danger-subtle text-danger px-2 py-1 rounded-3 fs-6">
+            <i className="bi bi-cup-straw"></i>
+          </span>
+          <h5 className="modal-title fw-bold tracking-wider m-0 text-uppercase small">Bar Sorpresa</h5>
         </div>
+        <button type="button" className="btn-close btn-close-white opacity-75" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      {/* MODAL: BAR SORPRESA */}
-      <div className="modal fade" id="barModal" tabIndex="-1" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div className="modal-content bg-dark">
-            <div className="modal-header border-0">
-              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-cup-straw me-2"></i> BAR SORPRESA</h5>
-              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      <div className="modal-body px-4 pb-4">
+        <p className="text-white-50 small text-center mb-4 px-2" style={{ lineHeight: '1.5' }}>
+          Tragos explosivos preparados en vivo por nuestros mejores bartenders.
+        </p>
+        
+        {/* CONTENEDOR DE TRAGOS */}
+        <div className="d-flex flex-column gap-3">
+          
+          {/* TRAGO 1: BEBIDA DINAMITA */}
+          <div className="p-3 rounded-4 position-relative overflow-hidden" 
+               style={{ 
+                 background: 'linear-gradient(135deg, rgba(255, 0, 68, 0.08) 0%, rgba(0, 0, 0, 0.5) 100%)', 
+                 border: '1px solid rgba(255, 0, 68, 0.2)',
+                 backdropFilter: 'blur(10px)'
+               }}>
+            <div className="d-flex align-items-center justify-content-between mb-1.5">
+              <span className="fw-bold text-white tracking-wide small text-uppercase">
+                <i className="bi bi-fire text-danger me-1.5"></i> Bebida Dinamita
+              </span>
+              <span className="badge rounded-pill bg-danger bg-opacity-10 text-danger border border-danger border-opacity-20 extreme-small uppercase fw-bold px-2 py-0.5" style={{ fontSize: '0.6rem', letterSpacing: '0.5px' }}>
+                Fuego Directo
+              </span>
             </div>
-            <div className="modal-body">
-              <p className="text-muted small text-center mb-4">Tragos explosivos preparados en vivo por nuestros bartenders.</p>
-              
-              <div className="drink-card p-3 mb-3 border border-danger rounded-3" style={{ background: 'rgba(255,0,0,0.05)' }}>
-                <div className="drink-title fw-bold text-danger"><i className="bi bi-fire me-2"></i> BEBIDA DINAMITA</div>
-                <div className="small text-white mt-1">Mezcla explosiva de licores fuertes encendidos en fuego. Tómalo de un solo golpe.</div>
-              </div>
-
-              <div className="drink-card p-3 mb-3 border border-warning rounded-3" style={{ background: 'rgba(255,255,0,0.05)' }}>
-                <div className="drink-title text-warning fw-bold"><i className="bi bi-cloud-haze2 me-2"></i> GAS LACRIMÓGENO</div>
-                <div className="small text-white mt-1">Trago ahumado con hielo seco y sabor ácido intenso. Te hará llorar pero pedirás más.</div>
-              </div>
-
-              <div className="drink-card p-3 mb-3 border border-info rounded-3" style={{ background: 'rgba(0,255,255,0.05)' }}>
-                <div className="drink-title text-info fw-bold"><i className="bi bi-unlock-fill me-2"></i> BEBIDA DESBLOQUEO</div>
-                <div className="small text-white mt-1">El elixir ideal para quitar la timidez. Suave, frutal pero engañoso.</div>
-              </div>
-            </div>
+            <p className="m-0 text-white-50 small" style={{ fontSize: '0.825rem', lineHeight: '1.4' }}>
+              Mezcla explosiva de licores fuertes encendidos en fuego. Tómalo de un solo golpe.
+            </p>
           </div>
+
+          {/* TRAGO 2: GAS LACRIMÓGENO */}
+          <div className="p-3 rounded-4 position-relative overflow-hidden" 
+               style={{ 
+                 background: 'linear-gradient(135deg, rgba(255, 0, 68, 0.04) 0%, rgba(0, 0, 0, 0.5) 100%)', 
+                 border: '1px solid rgba(255, 0, 68, 0.15)',
+                 backdropFilter: 'blur(10px)'
+               }}>
+            <div className="d-flex align-items-center justify-content-between mb-1.5">
+              <span className="fw-bold text-white tracking-wide small text-uppercase">
+                <i className="bi bi-cloud-haze2 text-danger me-1.5"></i> Gas Lacrimógeno
+              </span>
+              <span className="badge rounded-pill bg-danger bg-opacity-10 text-danger border border-danger border-opacity-20 extreme-small uppercase fw-bold px-2 py-0.5" style={{ fontSize: '0.6rem', letterSpacing: '0.5px' }}>
+                Efecto Humo
+              </span>
+            </div>
+            <p className="m-0 text-white-50 small" style={{ fontSize: '0.825rem', lineHeight: '1.4' }}>
+              Trago ahumado con hielo seco y sabor ácido intenso. Te hará llorar pero pedirás más.
+            </p>
+          </div>
+
+          {/* TRAGO 3: BEBIDA DESBLOQUEO */}
+          <div className="p-3 rounded-4 position-relative overflow-hidden" 
+               style={{ 
+                 background: 'linear-gradient(135deg, rgba(255, 0, 68, 0.04) 0%, rgba(0, 0, 0, 0.5) 100%)', 
+                 border: '1px solid rgba(255, 0, 68, 0.15)',
+                 backdropFilter: 'blur(10px)'
+               }}>
+            <div className="d-flex align-items-center justify-content-between mb-1.5">
+              <span className="fw-bold text-white tracking-wide small text-uppercase">
+                <i className="bi bi-unlock-fill text-danger me-1.5"></i> Bebida Desbloqueo
+              </span>
+              <span className="badge rounded-pill bg-danger bg-opacity-10 text-danger border border-danger border-opacity-20 extreme-small uppercase fw-bold px-2 py-0.5" style={{ fontSize: '0.6rem', letterSpacing: '0.5px' }}>
+                Rompe Hielo
+              </span>
+            </div>
+            <p className="m-0 text-white-50 small" style={{ fontSize: '0.825rem', lineHeight: '1.4' }}>
+              El elixir ideal para quitar la timidez. Suave, frutal pero completamente engañoso.
+            </p>
+          </div>
+
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
       {/* MODAL: PRÓXIMOS EVENTOS */}
-      <div className="modal fade" id="nextEventsModal" tabIndex="-1" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content bg-dark">
-            <div className="modal-header border-0">
-              <h5 className="modal-title text-danger fw-bold"><i className="bi bi-rocket-takeoff-fill me-2"></i> PRÓXIMOS EVENTOS</h5>
-              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div className="modal-body text-center py-5">
-              <i className="bi bi-calendar-x text-muted" style={{fontSize: '3rem'}}></i>
-              <h6 className="mt-3 text-white fw-bold">Pronto revelaremos más locuras...</h6>
-              <p className="small text-muted mt-2">Mantente atento a las redes de <strong>LABUBU EVENTS</strong> para enterarte de nuestra próxima gran temática.</p>
-            </div>
-          </div>
+<div className="modal fade" id="nextEventsModal" tabIndex="-1" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered">
+    <div className="modal-content border-0 bg-dark text-white shadow-2xl" style={{ borderRadius: '24px', overflow: 'hidden' }}>
+      
+      {/* Header minimalista */}
+      <div className="modal-header border-0 px-4 pt-4 pb-2 d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center gap-2">
+          <span className="badge bg-danger-subtle text-danger px-2 py-1 rounded-3 fs-6">
+            <i className="bi bi-rocket-takeoff-fill"></i>
+          </span>
+          <h5 className="modal-title fw-bold tracking-wider m-0 text-uppercase small">Próximos Eventos</h5>
         </div>
+        <button type="button" className="btn-close btn-close-white opacity-75" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
+      {/* Contenido con diseño de intriga / Glassmorphism */}
+      <div className="modal-body text-center px-4 py-5">
+        
+        {/* Contenedor del Icono con brillo neón sutil */}
+        <div className="d-inline-flex align-items-center justify-content-center mb-4 rounded-circle bg-danger bg-opacity-10 border border-danger border-opacity-20 shadow-lg" 
+             style={{ width: '80px', height: '80px' }}>
+          <i className="bi bi-calendar-event text-danger" style={{ fontSize: '2.25rem' }}></i>
+        </div>
+        
+        {/* Bloque de Texto Estilizado */}
+        <div className="p-4 rounded-4 position-relative overflow-hidden" 
+             style={{ 
+               background: 'linear-gradient(135deg, rgba(255, 0, 68, 0.04) 0%, rgba(0, 0, 0, 0.6) 100%)', 
+               border: '1px solid rgba(255, 0, 68, 0.15)',
+               backdropFilter: 'blur(10px)'
+             }}>
+          <h6 className="text-white fw-bold text-uppercase tracking-wide mb-2" style={{ fontSize: '1rem' }}>
+            Pronto revelaremos más locuras...
+          </h6>
+          <p className="small text-white-50 m-0" style={{ lineHeight: '1.6' }}>
+            Mantente atento a las redes oficiales de <strong className="text-white fw-semibold">LABUBU EVENTS</strong> para ser el primero en enterarte de nuestra próxima gran temática.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
     </div>
   );

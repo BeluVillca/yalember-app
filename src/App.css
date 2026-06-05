@@ -285,3 +285,30 @@ a {
 a:hover {
   color: var(--rojo-neon);
 }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin {
+  animation: spin 4s linear infinite;
+}
+.navbar-custom-link {
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+}
+
+.navbar-custom-link:hover, .navbar-custom-link:focus {
+  color: #ff0044 !important;
+  background: rgba(255, 0, 68, 0.08);
+}
+.nav-custom-btn {
+  transition: all 0.2s ease-in-out;
+  font-size: 0.85rem;
+}
+
+/* Efecto al pasar el mouse en PC o tocar en celular */
+.nav-custom-btn:hover, .nav-custom-btn:active {
+  color: #ff0044 !important;
+  background: rgba(255, 0, 68, 0.08) !important;
+}

@@ -312,3 +312,17 @@ a:hover {
   color: #ff0044 !important;
   background: rgba(255, 0, 68, 0.08) !important;
 }
+
+.bar-libre-btn:hover, .bar-libre-btn:active {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(255, 0, 68, 0.5) !important;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}

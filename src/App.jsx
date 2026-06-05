@@ -372,7 +372,7 @@ function App() {
         {/* Intro */}
         <h6 className="text-white fw-bold text-uppercase tracking-widest small mb-2">La Fiesta Más Exclusiva</h6>
         <p className="text-white-50 small px-2 mb-4" style={{ lineHeight: '1.6' }}>
-          Prepárate para una noche inolvidable. YALEMBER llega con una producción de primer nivel, luces láser, sonido envolvente y el mejor ambiente de la ciudad.
+          Prepárate para una noche inolvidable. YALEMBER está apunto de aterrizar. ¿Te la pensas perder?
         </p>
         
         {/* BLOQUES DE INFORMACIÓN (Glassmorphism / Neon sutil) */}
@@ -823,6 +823,96 @@ function App() {
     </div>
   </div>
 </div>
+
+
+{/* BOTÓN LARGO - PROMO BAR LIBRE */}
+<div className="w-100 mt-4 px-2">
+  <button 
+    type="button" 
+    className="btn w-100 py-3 rounded-4 fw-black tracking-widest text-uppercase d-flex align-items-center justify-content-center gap-2 shadow-lg bar-libre-btn"
+    data-bs-toggle="modal" 
+    data-bs-target="#barLibreModal"
+    style={{
+      background: 'linear-gradient(135deg, #832e2e 0%, #1a1a1a 100%)',
+      color: '#fff',
+      border: '1px solid rgba(255, 0, 68, 0.4)',
+      fontSize: '0.95rem',
+      letterSpacing: '2px',
+      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+    }}
+  >
+    {/* Ícono de regalo cambiado a un rojo moderno y vibrante */}
+    <i className="bi bi-gift-fill text-danger fs-5 animate-bounce" style={{ filter: 'drop-shadow(0 0 5px #ff0044)' }}></i>
+    <span>Hora de Bar Libre</span>
+  </button>
+</div>
+
+{/* MODAL: 1 HORA DE BAR LIBRE */}
+<div className="modal fade" id="barLibreModal" tabIndex="-1" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered px-3">
+    <div className="modal-content border-0 bg-dark text-white shadow-2xl" style={{ borderRadius: '24px', overflow: 'hidden' }}>
+      
+      {/* Header del Modal */}
+      <div className="modal-header border-0 px-4 pt-4 pb-2 d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center gap-2">
+          {/* Badge adaptado a rojo moderno */}
+          <span className="badge bg-danger bg-opacity-10 text-danger px-2 py-1 rounded-3 fs-6 border border-danger border-opacity-25">
+            <i className="bi bi-star-fill"></i>
+          </span>
+          <h5 className="modal-title fw-bold tracking-wider m-0 text-uppercase small text-danger">Beneficio Exclusivo</h5>
+        </div>
+        <button type="button" className="btn-close btn-close-white opacity-75" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      {/* Contenido del Modal */}
+      <div className="modal-body text-center px-4 py-4">
+        
+        {/* Título Principal */}
+        <h3 className="fw-black text-uppercase tracking-wide mb-3 text-white" style={{ fontSize: '1.6rem' }}>
+          1 HORA DE BAR LIBRE
+        </h3>
+        
+        {/* Línea divisoria neón */}
+        <div className="mx-auto mb-4" style={{ width: '50px', height: '3px', background: '#ff0044', borderRadius: '2px' }}></div>
+
+        {/* Caja de Información */}
+        <div className="p-4 rounded-4 text-start mb-2" 
+             style={{ 
+               background: 'rgba(255, 255, 255, 0.03)', 
+               border: '1px solid rgba(255, 255, 255, 0.08)' 
+             }}>
+          
+          <div className="d-flex gap-3 mb-3">
+            <div className="text-danger mt-1"><i className="bi bi-unlock-fill fs-4"></i></div>
+            <div>
+              <h6 className="fw-bold text-white mb-1 text-uppercase small tracking-wide">¿Cómo se desbloquea?</h6>
+              <p className="small text-white-50 m-0">Se desbloquea automáticamente cuando compras tu entrada para el evento.</p>
+            </div>
+          </div>
+
+          <div className="d-flex gap-3 pt-2 border-top border-secondary border-opacity-25">
+            {/* Ícono de staff cambiado también a rojo neón para mantener la estética */}
+            <div className="text-danger mt-1"><i className="bi bi-lightning-charge-fill fs-4" style={{ filter: 'drop-shadow(0 0 3px #ff0044)' }}></i></div>
+            <div>
+              <h6 className="fw-bold text-white mb-1 text-uppercase small tracking-wide">¡Asegura tu cupo!</h6>
+              <p className="small text-white-50 m-0">Corre con tu staff de preferencia para adquirir tu ingreso antes de que se agoten.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
     </div>
   );
